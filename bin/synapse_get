@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euf -o pipefail
+
+# get file from Synapse with parameters
+synapse -u ${1} -p ${2} get ${3}
