@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euf -o pipefail
 
-cp $1 "~/.synapseConfig"
+# parse credentials from config file
+CREDENTIALS=($(python /usr/local/bin/parse_config.py ${1}))
 
 # get file from Synapse
-synapse get ${2} | grep "Creating" | awk '{print $2}'
+synapse login -u ${CREDENTIALS[0]} -p ${CREDENTIALS[1]} --rememberMe
+synapse get ${2}

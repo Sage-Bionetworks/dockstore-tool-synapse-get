@@ -36,6 +36,8 @@ RUN git clone git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
     python setup.py install
 
 COPY bin/synapse_get /usr/local/bin/
+COPY bin/parse_config.py /usr/local/bin/
 RUN chmod a+x /usr/local/bin/synapse_get
+RUN chmod a+x /usr/local/bin/parse_config.py
 
 CMD ["/bin/bash"]
