@@ -16,20 +16,17 @@ requirements:
   dockerPull: quay.io/jaeddy/dockstore-tool-synapse-get:1.6.1--1
 
 inputs:
-  user:
+  config_file:
+    type: File
     inputBinding:
       position: 1
 
-  password:
+  synapse_id:
     inputBinding:
       position: 2
 
-  synapse_id:
-    inputBinding:
-      position: 3
-
 outputs:
-  get_report:
+  file_path:
     type: stdout
 
 baseCommand: ["bash", "/usr/local/bin/synapse_get"]

@@ -1,5 +1,4 @@
 {
-    "user": "james.eddy@sagebase.org",
-    "password": "",
-    "synapse_id": ""
+    "config_file": "~/.synapseConfig",
+    "synapse_id": "syn8556063"
 }
