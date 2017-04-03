@@ -17,7 +17,7 @@ $namespaces:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: jaeddy/dockstore-tool-synapse-get:1.6.1--1
+  dockerPull: quay.io/jaeddy/dockstore-tool-synapse-get:1.6.1--1
 
 inputs:
   config_file:
