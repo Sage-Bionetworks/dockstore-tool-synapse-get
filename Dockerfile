@@ -21,6 +21,7 @@ MAINTAINER James Eddy <james.a.eddy@gmail.com>
 
 # set version here to minimize need for edits below
 ENV VERSION=1.6.1
+ENV BRANCH=develop
 
 # set up packages
 USER root
@@ -30,13 +31,13 @@ ENV PACKAGES python-dev git python-setuptools python-pip
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ${PACKAGES}
 
-RUN git clone git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
+RUN git clone -b ${BRANCH} git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
     cd synapsePythonClient && \
-    git checkout v${VERSION} && \
-    python setup.py install
-
-COPY bin/synapse_get /usr/local/bin/
+    #git checkout v${VERSION} && \
+    python setup.py develop
+    
 COPY bin/parse_config.py /usr/local/bin/
+COPY bin/synapse_get /usr/local/bin/
 RUN chmod a+x /usr/local/bin/synapse_get
 RUN chmod a+x /usr/local/bin/parse_config.py
 
