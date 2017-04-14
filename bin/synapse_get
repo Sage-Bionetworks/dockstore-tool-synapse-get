@@ -6,7 +6,7 @@ while getopts "c:i:q:h" ARG; do
     case "$ARG" in
     	c ) CONFIG=$OPTARG;;
         i ) ENTITY_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" $ENTITY_ID);;
-		q ) QUERY=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '-q \"{$QUERY}\"');;
+		q ) QUERY=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '-q' '"'$QUERY'"');;
         h ) usage; exit 0;;
         * ) usage; exit 1;;
     esac
@@ -21,8 +21,3 @@ synapse login -u ${CREDENTIALS[0]} -p ${CREDENTIALS[1]} --rememberMe
 COMMAND=$( IFS=' '; echo "${CMD_ARGS[*]}" );
 echo $COMMAND
 eval $COMMAND
-
-
-# QUERY="select id from file where parentId == 'syn8507134'"
-# COMMAND="synapse get -q \"${QUERY}\""
-# eval $COMMAND
