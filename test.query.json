@@ -5,6 +5,7 @@
     },
     "query": "select id from file where parentId == 'syn8507134'",
     "output_filename": [
-        "test.txt"
+        "test.txt",
+        "testingquery.txt"
     ]
 }

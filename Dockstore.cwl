@@ -41,7 +41,9 @@ inputs:
 
 outputs:
   output:
-    type: File
+    type:
+      type: array
+      items: File
     outputBinding:
       glob: $(inputs.output_filename)
 
