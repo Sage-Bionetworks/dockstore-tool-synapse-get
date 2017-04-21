@@ -1,0 +1,11 @@
+{
+    "config_file": {
+        "class": "File",
+        "path": "test.synapseConfig"
+    },
+    "query": "select id from file where parentId == 'syn8507134'",
+    "output_filename": [
+        "test.txt",
+        "testingquery.txt"
+    ]
+}

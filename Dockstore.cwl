@@ -17,22 +17,33 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: quay.io/jaeddy/dockstore-tool-synapse-get:1.6.1--1
+  #dockerPull: quay.io/jaeddy/dockstore-tool-synapse-get:1.6.1--1
+  dockerPull: thomasvyu/synget
 
 inputs:
   config_file:
     type: File
     inputBinding:
       position: 1
+      prefix: -c
 
   synapse_id:
-    type: string
+    type: string?
     inputBinding:
       position: 2
+      prefix: -i
+
+  query:
+    type: string?
+    inputBinding:
+      position: 3
+      prefix: -q
 
 outputs:
   output:
-    type: File
+    type:
+      type: array
+      items: File
     outputBinding:
       glob: $(inputs.output_filename)
 
