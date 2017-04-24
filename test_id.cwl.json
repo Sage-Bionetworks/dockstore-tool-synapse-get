@@ -3,8 +3,5 @@
         "class": "File",
         "path": "test.synapseConfig"
     },
-    "synapse_id": "syn8556063",
-    "output_filename": [
-        "test.txt"
-    ]
+    "synapse_id": "syn8556063"
 }
