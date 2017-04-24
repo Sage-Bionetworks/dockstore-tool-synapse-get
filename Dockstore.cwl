@@ -17,8 +17,7 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  #dockerPull: quay.io/jaeddy/dockstore-tool-synapse-get:1.6.1--1
-  dockerPull: thomasvyu/synget
+  dockerPull: quay.io/jaeddy/dockstore-tool-synapse-get:1.6.2.dev--1
 
 inputs:
   config_file:
@@ -45,6 +44,6 @@ outputs:
       type: array
       items: File
     outputBinding:
-      glob: $(inputs.output_filename)
+      glob: "synapse_files/*"
 
 baseCommand: ["bash", "/usr/local/bin/synapse_get"]

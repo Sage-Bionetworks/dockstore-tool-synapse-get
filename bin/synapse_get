@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euf -o pipefail
 
+# parse inputs and build command args
 CMD_ARGS=('synapse' 'get')
 while getopts "c:i:q:h" ARG; do
     case "$ARG" in
@@ -15,9 +16,17 @@ shift $(($OPTIND - 1))
 
 # parse credentials from config file
 CREDENTIALS=($(python /usr/local/bin/parse_config.py ${CONFIG}))
-# get file from Synapse
+
+# create temp folder to store files; add to command args
+SYN_DIR="synapse_files"
+mkdir $SYN_DIR
+CMD_ARGS=("${CMD_ARGS[@]}" '--downloadLocation' $SYN_DIR)
+
+# log in to Synapse
 synapse login -u ${CREDENTIALS[0]} -p ${CREDENTIALS[1]} --rememberMe
 
+# get file from Synapse
 COMMAND=$( IFS=' '; echo "${CMD_ARGS[*]}" );
 echo $COMMAND
 eval $COMMAND
+echo "Downloaded files: $(find ${SYN_DIR} -mindepth 1 -maxdepth 1)"
